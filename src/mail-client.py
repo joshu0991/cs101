@@ -1,6 +1,7 @@
 import bluetooth
 import time
 import RPi.GPIO as io
+from camera import take_picture
 
 
 io.setmode(io.BCM)
@@ -23,20 +24,16 @@ if target_address is not None:
     print("Found target device")
 else:
     print("Could not find device to pair with trying default address")
-
+        
 sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 sock.connect((target_address, port))
 
-counter = 0
 while True:
     if (io.input(pir_pin)):
-        ++counter
-        sock.send("<Mail Received/>")
+        take_picture()
+        fp = open("/home/pi/cs101/src/recent.png", "r")
+        string = fp.read()
+        sock.send(str(len(string)))
+        sock.send(string)
         print("Mails Here!")
-
-        if counter == 20:
-            counter = 0
-            sock.close()
-            time.sleep(15)
-            sock.connect((target_address, port))
-            
+        time.sleep(15)
