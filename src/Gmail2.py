@@ -1,6 +1,6 @@
 import smtplib
 van_adres = 'cs101group7@gmail.com'
-recipients = ['behmardibehrad@gmail.com', 'behmardibehrad1@gmail.com']
+recipients = ['behmardibehrad@gmail.com', 'joshualilly91@gmail.com']
 recipients1 = ['zduric@gmu.edu',
                'zrajabi@gmu.edu',
                'thristov@gmu.edu']
