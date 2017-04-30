@@ -9,7 +9,7 @@ print(mytime)
 now = datetime.datetime.now()
 now.strftime("%I:%M%p on %B %d, %Y")
 
-url = 'http://54.213.153.156:7272/api/v0.1/eaaefbeed081427b8fd74561f396bd41/push'
+url = 'http://54.191.52.234:7272/api/v0.1/eaaefbeed081427b8fd74561f396bd41/push'
 data_push_statistic = dict(tile='listing', key='id_13', data=json.dumps({"title": "Statistics",
 "items": [[" "],["  Mail Recieved on "],["Date : " + now.strftime("%B %d, %Y")],
           ["Time : " + now.strftime("%I:%M%p")],
@@ -21,8 +21,8 @@ data_push_group_memebrs = dict(tile='listing',
                      "title": "Group Memebers",
                      "items": [["\t\tCS 101 GROUP PROJECT"],["Joshua Lilly"],["Behrad Behmardi"],["William Zheng"],["Omnia Elemary"]]}))
 
-data_push_mail_notification = dict(tile='Mail Alert',
-                 key='id_2',
+data_push_mail_notification = dict(tile='big_value',
+                 key='id_20',
                  data=json.dumps({"title": "Mail Notification",
                "description": "number of blockers",
                "big-value": "1 Mail",
