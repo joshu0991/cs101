@@ -21,8 +21,8 @@ data_push_group_memebrs = dict(tile='listing',
                      "title": "Group Memebers",
                      "items": [["\t\tCS 101 GROUP PROJECT"],["Joshua Lilly"],["Behrad Behmardi"],["William Zheng"],["Omnia Elemary"]]}))
 
-data_push_mail_notification = dict(tile='Mail Alert',
-                 key='id_2',
+data_push_mail_notification = dict(tile='big_value',
+                 key='id_20',
                  data=json.dumps({"title": "Mail Notification",
                "description": "number of blockers",
                "big-value": "1 Mail",
