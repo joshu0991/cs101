@@ -2,8 +2,14 @@
 import requests
 import json
 import datetime
-
+counter = 0
+def init():
+    global counter
+    counter = 0
 def restful_request():
+    global counter
+    counter = counter + 1
+    print ("counter " + str(counter))
     mytime = datetime.datetime.now()
     print(mytime)
 
@@ -23,10 +29,10 @@ def restful_request():
                          "items": [["\t\tCS 101 GROUP PROJECT"],["Joshua Lilly"],["Behrad Behmardi"],["William Zheng"],["Omnia Elemary"]]}))
 
     data_push_mail_notification = dict(tile='big_value',
-                                       key='id_2',
+                                       key='id_20',
                                        data=json.dumps({"title": "Mail Notification",
                                                         "description": "number of New Mails",
-                                                        "big-value": "177 Mail",
+                                                        "big-value": str(counter),
                                                         "upper-left-label": "critical:",
                                                         "upper-left-value": "1020",
                                                         "lower-left-label": "major:",
@@ -54,7 +60,5 @@ def restful_request():
     print(r.status_code, r.reason)
     print(r.text)
     print(r.status_code, r.reason)
-restful_request()
-
-
+#restful_request()
 
