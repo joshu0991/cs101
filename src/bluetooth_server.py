@@ -1,5 +1,6 @@
 import bluetooth
 from Gmail2 import send_mail
+from restapi import restful_request
 
 port = 1
 server_sock = bluetooth.BluetoothSocket( bluetooth.RFCOMM )
@@ -17,7 +18,7 @@ while True:
     print (data)
     fh = open("tmp.png", "w")
     counter = 0
-    while data != 'done':
+    while 'done' not in data:
         counter = counter + 1024
         print ("Getting data " + str(counter ))
         data = client_sock.recv(1024)
@@ -25,9 +26,10 @@ while True:
     fh.close()
     print("print sending")
     send_mail()
+    print ("print restful request")
+    restful_request()
     #print "Received [%s]" % data
     
     print("Closing connection")
-    client_sock.close()
     server_sock.close()
     print ("complete")
