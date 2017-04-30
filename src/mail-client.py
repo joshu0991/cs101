@@ -2,6 +2,7 @@ import bluetooth
 import time
 import RPi.GPIO as io
 from camera import take_picture
+import StringIO
 
 
 io.setmode(io.BCM)
@@ -15,7 +16,7 @@ port = 1
 nearby_devices = bluetooth.discover_devices()
 
 for dev in nearby_devices:
-    print dev
+    print (dev)
     if target_name == bluetooth.lookup_name(dev):
         target_address = dev
         break
@@ -30,10 +31,16 @@ sock.connect((target_address, port))
 
 while True:
     if (io.input(pir_pin)):
+        print("Capturing")
         take_picture()
         fp = open("/home/pi/cs101/src/recent.png", "r")
         string = fp.read()
         sock.send(str(len(string)))
-        sock.send(string)
+        sio = StringIO.StringIO(string)
+        counter = 0
+        while counter <= len(string):    
+            sock.send(sio.read(1024))
+            counter = counter + 1024
+        sock.send('done')
         print("Mails Here!")
-        time.sleep(15)
+        time.sleep(30)
