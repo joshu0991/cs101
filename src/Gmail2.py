@@ -2,7 +2,7 @@ import smtplib
 
 def send_mail():
     van_adres = 'cs101group7@gmail.com'
-    recipients = ['behmardibehrad@gmail.com', 'joshualilly91@gmail.com']
+    recipients = ['behmardibehrad@gmail.com','7038699293@messaging.sprintpcs.com','5712244794@vtext.com', 'joshualilly91@gmail.com']
     recipients1 = ['zduric@gmu.edu',
                    'zrajabi@gmu.edu',
                    'thristov@gmu.edu']
