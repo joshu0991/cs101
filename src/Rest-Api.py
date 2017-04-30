@@ -9,7 +9,7 @@ print(mytime)
 now = datetime.datetime.now()
 now.strftime("%I:%M%p on %B %d, %Y")
 
-url = 'http://54.213.153.156:7272/api/v0.1/eaaefbeed081427b8fd74561f396bd41/push'
+url = 'http://54.191.52.234:7272/api/v0.1/eaaefbeed081427b8fd74561f396bd41/push'
 data_push_statistic = dict(tile='listing', key='id_13', data=json.dumps({"title": "Statistics",
 "items": [[" "],["  Mail Recieved on "],["Date : " + now.strftime("%B %d, %Y")],
           ["Time : " + now.strftime("%I:%M%p")],
