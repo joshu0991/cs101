@@ -1,22 +1,34 @@
+import smtplib
+import mimetypes
 from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText  # Added
+from email import encoders
+from email.message import Message
+from email.mime.audio import MIMEAudio
+from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
+from email.mime.text import MIMEText
 
-attachment = 'bob.jpg'
+emailfrom = 'cs101group7@gmail.com'
+recipients = ['behmardibehrad@gmail.com','7038699293@messaging.sprintpcs.com','5712244794@vtext.com', 'joshualilly91@gmail.com']
+emailto = recipients
+fileToSend = "1.jpg"
 
 msg = MIMEMultipart()
-msg["To"] = 
-msg["From"] = from
-msg["Subject"] = subject
+msg["From"] = emailfrom
+msg["To"] = emailto
+msg["Subject"] = "help I cannot send an attachment to save my life"
+msg.preamble = "help I cannot send an attachment to save my life"
 
-msgText = MIMEText('<b>%s</b><br><img src="cid:%s"><br>' % (body, attachment), 'html')
-msg.attach(msgText)   # Added, and edited the previous line
-
-fp = open(attachment, 'rb')
+fp = open(fileToSend, 'rb')
 img = MIMEImage(fp.read())
 fp.close()
-img.add_header('Content-ID', '<{}>'.format(attachment))
+img.add_header('Content-ID', '<{}>'.format(fileToSend))
 msg.attach(img)
+print(msg.as_string())
 
-print msg.as_string()
-exit(0)
+
+server = smtplib.SMTP("smtp.gmail.com:587")
+server.starttls()
+server.login(emailfrom,'newpasswordcs101')
+server.sendmail(emailfrom, emailto, msg.as_string())
+server.quit()
