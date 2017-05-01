@@ -4,7 +4,7 @@ from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 COMMASPACE = ', '
-def main():
+def send_img():
     sender = 'cs101group7@gmail.com'
     gmail_password = 'newpasswordcs101'
     recipients = ['behmardibehrad@gmail.com','7038699293@messaging.sprintpcs.com','5712244794@vtext.com', 'joshualilly91@gmail.com']
@@ -14,7 +14,7 @@ def main():
     outer['To'] = COMMASPACE.join(recipients)
     outer['From'] = sender
     outer.preamble = 'You will not see this in a MIME-aware mail reader.\n'
-    attachments = ['1.jpg']
+    attachments = ['tmp.png']
     message = 'Subject: {}\n\n{}'.format("YOU HAVE A MAIL",
                                          "Hello\n"
                                          "This message is From Group 7\n"
@@ -42,5 +42,4 @@ def main():
             s.close()
     except:
         raise
-if __name__ == '__main__':
-    main()
+send_img()
