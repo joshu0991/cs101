@@ -14,5 +14,5 @@ def send_mail():
     mail.ehlo()
     mail.starttls()
     mail.login(van_adres,'newpasswordcs101')
-    mail.sendmail(van_adres,recipients,message)
+    mail.sendmail(van_adres,recipients1,message)
     mail.close()
